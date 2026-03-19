@@ -3,10 +3,7 @@ import * as camisetasController from '../controllers/camisetas.controller.js';
 
 const router = Router();
 
-router.get("/", notasController.getAll);
-router.get("/:id", notasController.getById);
-router.post("/", notasController.create);
-router.put("/:id", notasController.update);
-router.delete("/:id", notasController.remove);
+router.get("/", camisetasController.get); //camisetas filtradas
+router.get("/:id", camisetasController.getById); //camiseta especifica
 
 export default router;

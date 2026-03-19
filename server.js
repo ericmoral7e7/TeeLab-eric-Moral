@@ -13,7 +13,7 @@ app.use((req, res, next) => {
 });
 
 // Montar rutas
-app.use('/api/camisetas', notasRouter);
+app.use('/api/camisetas/', camisetasRouter);
 //app.use('/comandas', comandasRouter);
 
 // Middleware de errores global
