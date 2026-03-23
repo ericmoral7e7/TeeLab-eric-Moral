@@ -20,3 +20,4 @@ export function getById(req, res) {
 
     res.json(camiseta);
 }
+//

@@ -1,7 +1,7 @@
 import * as comandasService from '../services/comandas.service.js';
 
-export function create(req, res) {
 
+export function create(req, res) {
     let result = comandasService.create(req.body);
 
     if (result.error) {
