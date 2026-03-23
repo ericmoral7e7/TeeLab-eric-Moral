@@ -3,7 +3,6 @@ import { camisetas } from '../data/camisetas.js';
 export function getCamisetas(filters) {
     let camisetasResultado = camisetas;
 
-    console.log(filters.color)
     if (filters.color) {
         camisetasResultado = camisetasResultado.filter(c => c.colores.includes(filters.color))
     }
@@ -43,6 +42,5 @@ export function ordenarCamisetas(camisetasArray, sort) {
     }
 }
 
-export function getFiltered() { return camisetas; }
 
 export function getById(id) { return camisetas.filter(camiseta => camiseta.id === id); }

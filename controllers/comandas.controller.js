@@ -11,3 +11,7 @@ export function create(req, res) {
 
     res.json(result);
 }
+
+export function getAll(req, res) {
+    res.json(comandasService.getAll);
+}
