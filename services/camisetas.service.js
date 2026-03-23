@@ -1,14 +1,5 @@
 import { camisetas } from '../data/camisetas.js';
 
-// // TODO
-// function validateNota(obj) {
-//     if (!obj || typeof obj !== "object") return "Body inválido";
-//     if (!obj.studentId || !obj.modulo || !obj.nota) return "Faltan campos, la petición debe contener: id, studentId, modulo, nota";
-//     return null;
-// }
-
-// const existsStudent = (id) => students.some(s => s.id === id);
-
 export function getCamisetas(filters) {
     let camisetasResultado = camisetas;
 
@@ -28,6 +19,7 @@ export function getCamisetas(filters) {
     return camisetasResultado
 }
 
+//[...array] -> Esto crea una copia del array
 export function ordenarCamisetas(camisetasArray, sort) {
     switch (sort) {
         case "precio_asc":

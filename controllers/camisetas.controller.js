@@ -2,10 +2,11 @@ import * as camisetasService from '../services/camisetas.service.js';
 
 export function get(req, res) {
 
-    const filters = req.query; // Aquí llegan los query params
+    const filters = req.query; // Filtros que llegan con query params
 
     let camisetas = camisetasService.getCamisetas(filters);
 
+    //Si se ha pasado un filtro de ordenamiento ordenar
     if (req.query.sort) {
         camisetas = camisetasService.ordenarCamisetas(camisetas, req.query.sort)
     }
