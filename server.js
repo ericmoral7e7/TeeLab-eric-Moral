@@ -13,8 +13,9 @@ app.use((req, res, next) => {
    next();
 });
 
+
 // Montar rutas
-app.use('/api/camisetas/', camisetasRouter);
+app.use('/api/camisetas', camisetasRouter);
 app.use('/api/comandas', comandasRouter);
 
 // Middleware de errores global
