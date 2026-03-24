@@ -1,10 +1,12 @@
 import express from 'express';
+import cors from 'cors';
 import camisetasRouter from './routes/camisetas.routes.js';
 import comandasRouter from './routes/comandas.routes.js';
 
 const app = express();
 const PORT = 3001;
 
+app.use(cors())
 app.use(express.json());
 
 // Middleware de log

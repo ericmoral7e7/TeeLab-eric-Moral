@@ -47,4 +47,4 @@ export function ordenarCamisetas(camisetasArray, sort) {
 }
 
 
-export function getById(id) { return camisetas.filter(camiseta => camiseta.id === id); }
+export function getById(id) { return camisetas.find(camiseta => camiseta.id === id); }

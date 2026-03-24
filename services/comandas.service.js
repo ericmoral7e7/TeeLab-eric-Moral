@@ -12,6 +12,9 @@ function validateComanda(comanda) {
     if (!comanda.cliente || !comanda.cliente.nombre || !comanda.cliente.email || !comanda.items)
         return "Faltan campos: cliente.nombre, cliente.email, items";
 
+    if (!comanda.direccion || !comanda.direccion.calle || !comanda.direccion.cp || !comanda.direccion.ciudad) {
+        return "Faltan datos de la dirección (calle, cp o ciudad)";
+    }
 
     // Minimo 2 caracteres
     if (comanda.cliente.nombre.trim().length < 2)
@@ -75,7 +78,7 @@ export function create(comandaNew) {
 
 
     //generate comanda id
-    let comandaID = "C" + (comandas.length + 1).toString().padStart(3, "0");
+    let comandaID = "ORD-" + (comandas.length + 1).toString().padStart(4, "0");
 
 
     const comandaToSave = { id: comandaID, ...comandaNew };
@@ -89,16 +92,19 @@ export function create(comandaNew) {
 
 
 function generarTicket(comanda) {
+    
     let total = 0
-    let objetoTicket = {}
-    objetoTicket.id = comanda.id
+    let objetoTicket = {
+        id: comanda.id,
+        fecha: new Date().toISOString(),
+        estado: "recibida",
+        items: []
+    }
     //objetoTicket.fecha
     //objetoTicket.estado
 
-
-    objetoTicket.items = []
     comanda.items.forEach(camiseta => {
-        let datosCamiseta = camisetas.find(c => c.camisetaId === camiseta.id)
+        let datosCamiseta = camisetas.find(c => c.id === camiseta.camisetaId)
         objetoTicket.items.push({
             camisetaId: camiseta.id,
             nombre: datosCamiseta.nombre,
@@ -110,6 +116,7 @@ function generarTicket(comanda) {
         })
         total += datosCamiseta.precioBase * camiseta.cantidad
     });
+    
     objetoTicket.total = Number(total.toFixed(2))
 
 
@@ -118,4 +125,4 @@ function generarTicket(comanda) {
 
 export const getAll = () => comandas
 
-export function getById(id) { return comandas.filter(comanda => comanda.id === id); }
+export function getById(id) { return comandas.find(comanda => comanda.id === id); }

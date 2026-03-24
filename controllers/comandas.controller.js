@@ -9,7 +9,7 @@ export function create(req, res) {
         return res.status(status).json({ message: result.error });
     }
 
-    res.json(result);
+    res.status(201).json(result);
 }
 
 export function getAll(req, res) {
@@ -18,5 +18,11 @@ export function getAll(req, res) {
 }
 
 export function getById(req, res) {
-    res.json(comandasService.getById(req.params.id));
+    const comanda = comandasService.getById(req.params.id);
+
+    if(!comanda){
+        return res.status(404).json({ error: "Comanda no encontrada" });
+    }
+
+    res.json(comanda);
 }
