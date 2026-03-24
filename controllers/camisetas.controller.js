@@ -15,7 +15,7 @@ export function get(req, res) {
 }
 
 export function getById(req, res) {
-    const camiseta = camisetasService.getById(Number(req.params.id));
+    const camiseta = camisetasService.getById(req.params.id);
     if (!camiseta) return res.status(404).json({ message: "Camiseta no trobada" });
 
     res.status(201).json(camiseta);

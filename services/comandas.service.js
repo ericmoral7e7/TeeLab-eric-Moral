@@ -117,3 +117,5 @@ function generarTicket(comanda) {
 }
 
 export const getAll = () => comandas
+
+export function getById(id) { return comandas.filter(comanda => comanda.id === id); }

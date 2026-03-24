@@ -16,3 +16,7 @@ export function getAll(req, res) {
     console.log(comandasService.getAll())
     res.json(comandasService.getAll());
 }
+
+export function getById(req, res) {
+    res.json(comandasService.getById(req.params.id));
+}
