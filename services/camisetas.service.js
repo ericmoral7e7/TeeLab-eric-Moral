@@ -8,11 +8,15 @@ export function getCamisetas(filters) {
     }
 
     if (filters.talla) {
-        camisetasResultado = camisetasResultado.filter(c => c.talla === filters.talla);
+        camisetasResultado = camisetasResultado.filter(c => c.tallas.includes(filters.talla));
     }
 
     if (filters.tag) {
-        camisetasResultado = camisetasResultado.filter(c => c.tag === filters.tag);
+        camisetasResultado = camisetasResultado.filter(c => c.tags.includes(filters.tag));
+    }
+
+    if (filters.q) {
+        camisetasResultado = camisetasResultado.filter(c => c.nombre.includes(filters.q) || c.descripcion.includes(filters.q));
     }
 
     return camisetasResultado
