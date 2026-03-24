@@ -1,3 +1,4 @@
+import fs from 'fs';
 import { comandas } from '../data/comandas.js';
 import { camisetas } from '../data/camisetas.js';
 
@@ -86,6 +87,12 @@ export function create(comandaNew) {
 
     comandas.push(comandaToSave);
 
+    //Guardar comandas en archivo
+    try {
+        fs.writeFileSync('./data/comandas-guardadas.json', JSON.stringify(comandas, null, 2));
+    } catch (err) {
+        console.error("Error guardando el archivo de comandas:", err);
+    }
 
     return generarTicket(comandaToSave);
 }
@@ -100,8 +107,6 @@ function generarTicket(comanda) {
         estado: "recibida",
         items: []
     }
-    //objetoTicket.fecha
-    //objetoTicket.estado
 
     comanda.items.forEach(camiseta => {
         let datosCamiseta = camisetas.find(c => c.id === camiseta.camisetaId)
