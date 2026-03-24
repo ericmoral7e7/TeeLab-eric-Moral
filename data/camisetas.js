@@ -1,4 +1,4 @@
-export let camisetas = JSON.parse(`[
+export let camisetas = [
   {
     "id": "TSH01",
     "nombre": "MACACARENA",
@@ -53,4 +53,3 @@ export let camisetas = JSON.parse(`[
     "tags": ["premium"]
   }
 ]
-`);

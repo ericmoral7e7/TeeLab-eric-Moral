@@ -110,7 +110,7 @@ function generarTicket(comanda) {
         })
         total += datosCamiseta.precioBase * camiseta.cantidad
     });
-    objetoTicket.total = total
+    objetoTicket.total = Number(total.toFixed(2))
 
 
     return objetoTicket

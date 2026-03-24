@@ -13,5 +13,6 @@ export function create(req, res) {
 }
 
 export function getAll(req, res) {
-    res.json(comandasService.getAll);
+    console.log(comandasService.getAll())
+    res.json(comandasService.getAll());
 }
